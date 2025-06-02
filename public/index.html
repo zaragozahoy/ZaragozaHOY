@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaragoza Hoy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <img src="https://scontent.fslp3-1.fna.fbcdn.net/v/t39.30808-6/491723010_1293793659415185_4975572253049090087_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=mWmxNBDFAWcQ7kNvwF_NSW0&_nc_oc=Adn9f1pbM1qk-k2WntfDbP3MGtoRt8rfgY8MjT1hY7saMDQkLOoXX-QA93Dc55e8dHTjAFXaUlJm-WKLOQU6IZDi&_nc_zt=23&_nc_ht=scontent.fslp3-1.fna&_nc_gid=nc-f2SH5d5Kc7eY5Xt0hEQ&oh=00_AfLPL-QzVj220nRA-1pf4lXtA7bq_KdalD5oq6Mlk0w49A&oe=6842AF43" alt="Logo" class="logo-img">
+            <span>Zaragoza Hoy</span>
+        </div>
+        <button id="loginIcon" title="Área restringida">
+            <span class="person-icon">&#128100;</span>
+        </button>
+    </header>
+
+    <!-- Modal de login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <div class="restricted-msg">Área restringida solo para dueños</div>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Entrar</button>
+            </form>
+            <div id="loginMessage"></div>
+        </div>
+    </div>
+
+    <main class="main-section">
+        <section id="newsCreator" style="display:none;">
+            <h2>Crear Noticia</h2>
+            <form id="newsForm">
+                <input type="text" id="newsTitle" placeholder="Título" required>
+                <input type="text" id="newsSubtitle" placeholder="Subtítulo (opcional)">
+                <input type="url" id="newsImage" placeholder="URL de la imagen (opcional)">
+                <textarea id="newsText" placeholder="Texto de la noticia" required></textarea>
+                <button type="submit">Publicar</button>
+                <button id="logoutBtn" style="display: none; margin-top: 1rem;">Cerrar sesión</button>
+            </form>
+        </section>
+        <section id="newsList">
+            <h2>Noticias</h2>
+            <div id="newsCards"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
