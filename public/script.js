@@ -44,7 +44,7 @@ loginForm.addEventListener('submit', function (e) {
             isLoggedIn = true;
             loginModal.style.display = 'none';
             newsCreator.style.display = "block";
-            logoutBtn.style.display = "block";
+            logoutBtn.style.display = "inline-block";
             renderNews();
         }, 700);
     } else {
@@ -57,7 +57,7 @@ loginForm.addEventListener('submit', function (e) {
 logoutBtn.addEventListener('click', () => {
     isLoggedIn = false;
     newsCreator.style.display = "none";
-    logoutBtn.style.display = "none";
+ logoutBtn.style.display = "none"; // Use 'none' to hide the button
     renderNews();
 });
 
@@ -76,13 +76,12 @@ newsForm.addEventListener('submit', function (e) {
 });
 
 function saveNews(news) {
-    let newsList = JSON.parse(localStorage.getItem('newsList')) || [];
+    let newsList = JSON.parse(newsCards.dataset.news || '[]'); // Get news from data attribute
     newsList.unshift(news);
-    localStorage.setItem('newsList', JSON.stringify(newsList));
+ newsCards.dataset.news = JSON.stringify(newsList); // Save news to data attribute
 }
 
 function renderNews() {
-    let newsList = JSON.parse(localStorage.getItem('newsList')) || [];
     newsCards.innerHTML = '';
     newsList.forEach((news, idx) => {
         const card = document.createElement('div');
@@ -113,9 +112,9 @@ function renderNews() {
 }
 
 function removeNews(idx) {
-    let newsList = JSON.parse(localStorage.getItem('newsList')) || [];
+    let newsList = JSON.parse(newsCards.dataset.news || '[]'); // Get news from data attribute
     newsList.splice(idx, 1);
-    localStorage.setItem('newsList', JSON.stringify(newsList));
+ newsCards.dataset.news = JSON.stringify(newsList); // Save news to data attribute
     renderNews();
 }
 
